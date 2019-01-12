@@ -3,13 +3,10 @@ title: API Reference
 
 language_tabs: # must be one of https://git.io/vQNgJ
   - shell
-  - ruby
-  - python
-  - javascript
 
 toc_footers:
-  - <a href='#'>Sign Up for a Developer Key</a>
-  - <a href='https://github.com/lord/slate'>Documentation Powered by Slate</a>
+  - <a href='https://lovely-ads.com'>LovelyAds (Website)</a>
+  - <a href='https://app.lovely-ads.com'>LovelyAds (App)</a>
 
 includes:
   - errors
@@ -19,80 +16,56 @@ search: true
 
 # Introduction
 
-Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.
-
-We have language bindings in Shell, Ruby, Python, and JavaScript! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
-
-This example API documentation page was created with [Slate](https://github.com/lord/slate). Feel free to edit it and use it as a base for your own API's documentation.
+Welcome to the LovelyAds API!
 
 # Authentication
 
 > To authorize, use this code:
 
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
+```shell
+  curl --request POST \
+    --url https://api.lovely-ads.com/auth/login \
+    --header 'content-type: application/json' \
+    --data '{
+    "email": "john.doe@example.com",
+    "password": "123456"
+  }'
 ```
+> The above command returns JSON structured like this:
 
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
+```json
+{
+  "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.(...).hfrE13-waIs2G05zx1GInF_CVJAfJxD52R9QNoVDwDA",
+  "id": "1f2dd3b0-cd56-11e8-8bdb-e7a88219db52",
+  "firstName": "John",
+  "lastName": "Doe",
+  "email": "john.doe@example.com",
+  "avatar": null,
+  "newUser": false,
+  "role": 2
+}
 ```
+> The presented key is false and shortened.
+
 
 ```shell
-# With shell, you can just pass the correct header with each request
 curl "api_endpoint_here"
-  -H "Authorization: meowmeowmeow"
+  -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9..."
 ```
 
-```javascript
-const kittn = require('kittn');
+LovelyAds uses JWT (Json Web Tokens) for authentication.
 
-let api = kittn.authorize('meowmeowmeow');
-```
+First you need to login by sending your email and password. If the given values are correct you'll receive a message with the token to be used as well as the user's informations.
 
-> Make sure to replace `meowmeowmeow` with your API key.
-
-Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our [developer portal](http://example.com/developers).
-
-Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:
-
-`Authorization: meowmeowmeow`
-
-<aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
-</aside>
+The token needs to be used in the *Authorization* header field using the *Bearer* prefix.
 
 # Kittens
 
 ## Get All Kittens
 
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get()
-```
-
 ```shell
 curl "http://example.com/api/kittens"
   -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let kittens = api.kittens.get();
 ```
 
 > The above command returns JSON structured like this:
@@ -135,30 +108,9 @@ Remember — a happy kitten is an authenticated kitten!
 
 ## Get a Specific Kitten
 
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get(2)
-```
-
 ```shell
 curl "http://example.com/api/kittens/2"
   -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.get(2);
 ```
 
 > The above command returns JSON structured like this:
@@ -189,31 +141,10 @@ ID | The ID of the kitten to retrieve
 
 ## Delete a Specific Kitten
 
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.delete(2)
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.delete(2)
-```
-
 ```shell
 curl "http://example.com/api/kittens/2"
   -X DELETE
   -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.delete(2);
 ```
 
 > The above command returns JSON structured like this:
@@ -237,3 +168,96 @@ Parameter | Description
 --------- | -----------
 ID | The ID of the kitten to delete
 
+# AdGroups
+
+## List all AdGroups
+
+## Update AdGroup
+
+
+
+# Billing
+
+## List all Billing
+
+## Create a Credit Card
+
+## Create a SEPA
+
+
+
+# Campaigns
+
+## Update a Campaign
+
+
+
+# Catalogs
+
+## List all Catalogs
+
+## Retrieve Stats
+
+
+
+# Companies
+
+## Retrieve a Company
+
+## Create Company
+
+## Update a Company
+
+## List all Companies
+
+## List all Users for a Company
+
+## List all Websites for a Company
+
+## List all Invoices for a Company
+
+## List all Billing for a Company
+
+## Update a Billing for a Company
+
+## Delete a Billing for a Company
+
+## Update Permissions for a Company
+
+## Attach a Company
+
+## Detach a Company
+
+
+
+# Keywords
+
+
+# Opportunities
+
+
+# Plans
+
+
+# Products
+
+
+# Providers
+
+
+# Rules
+
+
+# Structures
+
+
+# Terms
+
+
+# Users
+
+
+# Validations
+
+
+# Websites
