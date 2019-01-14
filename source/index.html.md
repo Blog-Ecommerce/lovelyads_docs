@@ -10,6 +10,22 @@ toc_footers:
 
 includes:
   - errors
+  - adgroups
+  - billing
+  - campaigns
+  - catalogs
+  - companies
+  - keywords
+  - opportunities
+  - plans
+  - products
+  - providers
+  - rules
+  - structures
+  - terms
+  - users
+  - validations
+  - websites
 
 search: true
 ---
@@ -167,97 +183,3 @@ This endpoint deletes a specific kitten.
 Parameter | Description
 --------- | -----------
 ID | The ID of the kitten to delete
-
-# AdGroups
-
-## List all AdGroups
-
-## Update AdGroup
-
-
-
-# Billing
-
-## List all Billing
-
-## Create a Credit Card
-
-## Create a SEPA
-
-
-
-# Campaigns
-
-## Update a Campaign
-
-
-
-# Catalogs
-
-## List all Catalogs
-
-## Retrieve Stats
-
-
-
-# Companies
-
-## Retrieve a Company
-
-## Create Company
-
-## Update a Company
-
-## List all Companies
-
-## List all Users for a Company
-
-## List all Websites for a Company
-
-## List all Invoices for a Company
-
-## List all Billing for a Company
-
-## Update a Billing for a Company
-
-## Delete a Billing for a Company
-
-## Update Permissions for a Company
-
-## Attach a Company
-
-## Detach a Company
-
-
-
-# Keywords
-
-
-# Opportunities
-
-
-# Plans
-
-
-# Products
-
-
-# Providers
-
-
-# Rules
-
-
-# Structures
-
-
-# Terms
-
-
-# Users
-
-
-# Validations
-
-
-# Websites
